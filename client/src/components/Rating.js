@@ -1,6 +1,6 @@
 import React from "react";
 
-const Ratings = ({ value, text, color }) => {
+const Rating = ({ value, text, color }) => {
    return (
       <div className="rating">
          <span>
@@ -68,4 +68,4 @@ const Ratings = ({ value, text, color }) => {
    );
 };
 
-export default Ratings;
+export default Rating;
