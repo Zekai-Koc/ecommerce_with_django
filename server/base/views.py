@@ -34,3 +34,9 @@ def getProduct(request, pk):
          product = i
          break
    return Response(product)
+
+
+@api_view(['GET'])
+def getUsers(request):
+   user = None
+   return Response(user)
