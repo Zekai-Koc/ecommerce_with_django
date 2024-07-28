@@ -5,7 +5,12 @@ import { LinkContainer } from "react-router-bootstrap";
 function Header() {
    return (
       <header>
-         <Navbar expand="lg" className="bg-body-tertiary" collapseOnSelect>
+         <Navbar
+            bg="dark"
+            expand="lg"
+            className="bg-body-tertiary"
+            collapseOnSelect
+         >
             <Container>
                <LinkContainer to="/">
                   <Navbar.Brand>My Ecommerce Site</Navbar.Brand>
@@ -24,6 +29,14 @@ function Header() {
                         <Nav.Link>
                            <i className="fas fa-user"></i>Login
                         </Nav.Link>
+                     </LinkContainer>
+
+                     <LinkContainer to="/API Integration Demo">
+                        <Nav.Link>API Integration Demo</Nav.Link>
+                     </LinkContainer>
+
+                     <LinkContainer to="/Change Backend Tech">
+                        <Nav.Link>Change Backend Tech</Nav.Link>
                      </LinkContainer>
                   </Nav>
                </Navbar.Collapse>
