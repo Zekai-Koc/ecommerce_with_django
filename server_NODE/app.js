@@ -1,3 +1,4 @@
+const { count } = require("console");
 const express = require("express");
 const fs = require("fs");
 
@@ -11,12 +12,14 @@ const products = JSON.parse(
 app.get("/api/v1/products", (req, res) => {
    res.status(200).json({
       status: "success",
+      count: products.length,
       data: products,
    });
 });
 
-app.post("/", (req, res) => {
-   res.status(200).json({ message: "post request..." });
+app.post("/api/v1/products", (req, res) => {
+   console.log(req.body);
+   res.status(201).json(req.body);
 });
 
 module.exports = app;
