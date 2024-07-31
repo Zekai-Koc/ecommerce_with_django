@@ -1,4 +1,26 @@
 const express = require("express");
+const fs = require("fs");
+
+const app = express();
+app.use(express.json());
+
+const products = JSON.parse(
+   fs.readFileSync(`${__dirname}//data//products.json`, "utf-8")
+);
+
+app.get("/api/v1/products", (req, res) => {
+   res.status(200).json({
+      status: "success",
+      data: products,
+   });
+});
+
+app.post("/", (req, res) => {
+   res.status(200).json({ message: "post request..." });
+});
+
+module.exports = app;
+
 // const morgan = require("morgan");
 // const tourRouter = require('./routes/tourRoutes');
 // const userRouter = require('./routes/userRoutes');
@@ -10,23 +32,6 @@ const express = require("express");
 // const mongoSanitize = require('express-mongo-sanitize');
 // const xss = require('xss-clean');
 // const hpp = require('hpp');
-
-const app = express();
-
-console.log(process.env.NODE_ENV);
-
-app.get("/", (req, res) => {
-   res.status(200).json({
-      message: "hello from my natours server.",
-      app: "Natours",
-   });
-});
-
-app.post("/", (req, res) => {
-   res.status(200).json({ message: "post request..." });
-});
-
-module.exports = app;
 
 // app.get('/api/v1/tours', getAllTours);
 // app.get('/api/v1/tours/:id', getTour);
@@ -45,3 +50,6 @@ module.exports = app;
 //   console.log(req.requestTime);
 //   next();
 // });
+
+// console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
+// console.log("products: ", products);
