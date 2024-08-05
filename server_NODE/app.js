@@ -24,6 +24,13 @@ app.get("/api/v1/products/:id", (req, res) => {
 
    const product = products.find((el) => el._id === id);
 
+   if (!product) {
+      return res.status(404).json({
+         status: "fail",
+         message: "Invalid ID",
+      });
+   }
+
    res.status(200).json({
       status: "success",
       data: { product },
@@ -33,6 +40,15 @@ app.get("/api/v1/products/:id", (req, res) => {
 app.post("/api/v1/products", (req, res) => {
    console.log(req.body);
    res.status(201).json(req.body);
+});
+
+app.patch("/api/v1/products/:id", (req, res) => {
+   res.status(200).json({
+      status: "success",
+      data: {
+         product: "<Updated product here...>",
+      },
+   });
 });
 
 module.exports = app;
