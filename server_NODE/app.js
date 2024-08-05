@@ -17,6 +17,19 @@ app.get("/api/v1/products", (req, res) => {
    });
 });
 
+app.get("/api/v1/products/:id", (req, res) => {
+   console.log(req.params);
+   // const id = req.params.id * 1;
+   const id = req.params.id;
+
+   const product = products.find((el) => el._id === id);
+
+   res.status(200).json({
+      status: "success",
+      data: { product },
+   });
+});
+
 app.post("/api/v1/products", (req, res) => {
    console.log(req.body);
    res.status(201).json(req.body);
