@@ -1,0 +1,44 @@
+const express = require("express");
+
+const getAllUsers = (req, res) => {
+   res.status(200).json({
+      status: "success",
+      message: "This is not yet implemented",
+   });
+};
+
+const getUser = (req, res) => {
+   res.status(200).json({
+      status: "success",
+      message: "This is not yet implemented",
+   });
+};
+
+const createUser = (req, res) => {
+   res.status(201).json({
+      status: "success",
+      message: "This is not yet implemented",
+   });
+};
+
+const updateUser = (req, res) => {
+   res.status(200).json({
+      status: "success",
+      message: "This is not yet implemented",
+   });
+};
+
+const deleteUser = (req, res) => {
+   res.status(204).json({
+      status: "success",
+      message: "This is not yet implemented",
+   });
+};
+
+const router = express.Router();
+
+router.route("/").get(getAllUsers).post(createUser);
+
+router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+
+module.exports = router;
