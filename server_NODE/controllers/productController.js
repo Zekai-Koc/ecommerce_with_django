@@ -4,6 +4,28 @@ const products = JSON.parse(
    fs.readFileSync(`${__dirname}//..//data//products.json`, "utf-8")
 );
 
+const checkID = (req, res, next, val) => {
+   console.log(`Product id is: ${val}`);
+
+   if (req.params.id * 1 > products.length) {
+      return res.status(404).json({
+         status: "fail",
+         message: "Invalid ID",
+      });
+   }
+   next();
+};
+
+const checkBody = (req, res, next) => {
+   if (!req.body.name || !req.body.price) {
+      return res.status(400).json({
+         status: "fail",
+         message: "Missing name or price",
+      });
+   }
+   next();
+};
+
 const getAllProducts = (req, res) => {
    res.status(200).json({
       status: "success",
@@ -64,4 +86,6 @@ module.exports = {
    createProduct,
    updateProduct,
    deleteProduct,
+   checkID,
+   checkBody,
 };
